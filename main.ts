@@ -1,88 +1,72 @@
-let num1:number = 0;
-let num2: number = 0;
-let cmd:string = null;
-let op:number = 0;
-let o:number = 0;
+let a=0;
+let b=0;
+let o=0;
+let op=0;
+let t=0;
 input.onButtonPressed(Button.A, function() {
-    if(cmd==null){
-        cmd = "A";
+    if(t==0){
+        a++;
+        basic.showNumber(a);
     }
-    if(cmd=='A'){
-        num1++;
-        basic.showNumber(num1);
-    }
-    else if(cmd=="A2"){
-        num2++;
-        basic.showNumber(num2);
+    else if(t==1){
+        b++;
+        basic.showNumber(b);
     }
 })
 input.onButtonPressed(Button.AB,function(){
-    cmd ="AB";
-    if(cmd=="AB"){
-        op++;
-        if (op == 1) {
+    o++;
+    if(o==1){
 
-            basic.showLeds(`
-                . . # . .
-                . . # . .
-                # # # # #
-                . . # . .
-                . . # . .
-                `);
-        }
-        if (op == 2) {
-
-            basic.showLeds(`
-                . . . . .
-                . . . . .
-                # # # # #
-                . . . . .
-                . . . . .
-                `)
-        }
-        if (op == 3) {
-
-            basic.showLeds(`
-                # . . . #
-                . # . # .
-                . . # . .
-                . # . # .
-                # . . . #
-                `)
-        }
-        if (op == 4) {
-
-            basic.showLeds(`
-                . . # . .
-                . . . . .
-                # # # # #
-                . . . . .
-                . . # . .
-                `)
-        }
+        basic.showLeds(`
+        . . # . .
+        . . # . .
+        # # # # #
+        . . # . .
+        . . # . .
+        `);
     }
-});
+    if (o == 2) {
+
+        basic.showLeds(`
+        . . . . .
+        . . . . .
+        # # # # #
+        . . . . .
+        . . . . .
+        `);
+    } if (o == 3) {
+
+        basic.showLeds(`
+        # . . . #
+        . # . # .
+        . . # . .
+        . # . # .
+        # . . . #
+        `);
+    } if (o == 4) {
+
+        basic.showLeds(`
+        . . # . .
+        . . . . .
+        # # # # #
+        . . . . .
+        . . # . .
+        `);
+    }
+})
 input.onButtonPressed(Button.B,function(){
-    if(cmd=="A"){
-        cmd="A2";
-    }
-    else if(cmd="A2"){
-        cmd="B";
-    }
-    if(cmd=="B"){
-        if(op==1){
-            o=num1+num2;
+    t++;
+    if(t==2){
+        if (o == 1) {
+            o=a+b;
         }
-        if (op == 2) {
-            o = num1 - num2;
-        }
-        if (op == 3) {
-            o = num1 * num2;
-        }
-        if (op == 4) {
-            o = num1 / num2;
+        if (o == 2) {
+            o=a-b;
+        } if (o == 1) {
+            o=a*b;
+        } if (o == 1) {
+            o=a/b;
         }
         basic.showNumber(o);
     }
-    
 })
