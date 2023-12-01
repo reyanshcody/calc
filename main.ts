@@ -4,7 +4,9 @@ let cmd:string = null;
 let op:number = 0;
 let o:number = 0;
 input.onButtonPressed(Button.A, function() {
-    cmd="A";
+    if(cmd==null){
+        cmd = "A";
+    }
     if(cmd=='A'){
         num1++;
         basic.showNumber(num1);
@@ -17,48 +19,46 @@ input.onButtonPressed(Button.A, function() {
 input.onButtonPressed(Button.AB,function(){
     cmd ="AB";
     if(cmd=="AB"){
-        while(o<4){
-            op++;
-            if(op==1){
-                
-                basic.showLeds(`
+        op++;
+        if (op == 1) {
+
+            basic.showLeds(`
                 . . # . .
                 . . # . .
                 # # # # #
                 . . # . .
                 . . # . .
                 `);
-            }
-            if (op == 2) {
+        }
+        if (op == 2) {
 
-                basic.showLeds(`
+            basic.showLeds(`
                 . . . . .
                 . . . . .
                 # # # # #
                 . . . . .
                 . . . . .
                 `)
-            }
-            if (op == 3) {
+        }
+        if (op == 3) {
 
-                basic.showLeds(`
+            basic.showLeds(`
                 # . . . #
                 . # . # .
                 . . # . .
                 . # . # .
                 # . . . #
                 `)
-            }
-            if (op == 4) {
+        }
+        if (op == 4) {
 
-                basic.showLeds(`
+            basic.showLeds(`
                 . . # . .
                 . . . . .
                 # # # # #
                 . . . . .
                 . . # . .
                 `)
-            }
         }
     }
 });
@@ -69,8 +69,6 @@ input.onButtonPressed(Button.B,function(){
     else if(cmd="A2"){
         cmd="B";
     }
-    
-    basic.showString(cmd);
     if(cmd=="B"){
         if(op==1){
             o=num1+num2;
