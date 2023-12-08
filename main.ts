@@ -1,22 +1,21 @@
-let a=0;
-let b=0;
-let o=0;
-let op=0;
-let t=0;
-input.onButtonPressed(Button.A, function() {
-    if(t==0){
+let a:number = 0;
+let b: number = 0;
+let o: number = 0;
+let op: number = 0;
+let toggle:number = 0;
+input.onButtonPressed(Button.A,function(){
+    if(toggle === 0){
         a++;
         basic.showNumber(a);
     }
-    else if(t==1){
+    else if(toggle === 1){
         b++;
         basic.showNumber(b);
     }
-})
+});//done
 input.onButtonPressed(Button.AB,function(){
-    o++;
-    if(o==1){
-
+    op++;
+    if(op === 1){
         basic.showLeds(`
         . . # . .
         . . # . .
@@ -25,8 +24,7 @@ input.onButtonPressed(Button.AB,function(){
         . . # . .
         `);
     }
-    if (o == 2) {
-
+    else if (op === 2) {
         basic.showLeds(`
         . . . . .
         . . . . .
@@ -34,8 +32,8 @@ input.onButtonPressed(Button.AB,function(){
         . . . . .
         . . . . .
         `);
-    } if (o == 3) {
-
+    }
+    else if (op === 3) {
         basic.showLeds(`
         # . . . #
         . # . # .
@@ -43,8 +41,8 @@ input.onButtonPressed(Button.AB,function(){
         . # . # .
         # . . . #
         `);
-    } if (o == 4) {
-
+    }
+    else if (op === 4) {
         basic.showLeds(`
         . . # . .
         . . . . .
@@ -53,20 +51,23 @@ input.onButtonPressed(Button.AB,function(){
         . . # . .
         `);
     }
-})
+});//done
 input.onButtonPressed(Button.B,function(){
-    t++;
-    if(t==2){
-        if (o == 1) {
+    toggle++;
+    if(toggle>=2){
+        if(op ===1){
             o=a+b;
+            basic.showNumber(o)
         }
-        if (o == 2) {
-            o=a-b;
-        } if (o == 1) {
-            o=a*b;
-        } if (o == 1) {
-            o=a/b;
+        else if (op === 2) {
+            o = a - b;
+            basic.showNumber(o)
+        } else if (op === 3) {
+            o = a * b;
+            basic.showNumber(o)
+        } else if (op === 4) {
+            o = a / b;
+            basic.showNumber(o)
         }
-        basic.showNumber(o);
     }
-})
+});
